@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real Madrid CF - Official Fanclub & Information</title>
+    <!-- Font & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* ===================================================
+           COLOR PALETTE (Real Madrid Official Theme)
+           - Pure White: #FFFFFF
+           - Gold Accent: #FEBE10 (Real Madrid Gold)
+           - Deep Navy Blue: #111B40 (Real Madrid Dark Navy)
+           - Royal Blue: #00529F
+           - Card Background: #FFFFFF / Section BG: #F4F6F9
+           =================================================== */
+        
+        :root {
+            --rm-white: #FFFFFF;
+            --rm-gold: #FEBE10;
+            --rm-navy: #111B40;
+            --rm-blue: #00529F;
+            --bg-light: #F8FAFC;
+            --text-dark: #1E293B;
+            --text-muted: #64748B;
+            --shadow: 0 10px 25px rgba(17, 27, 64, 0.08);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Kanit', 'Montserrat', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* --- Header & Dropdown Navigation --- */
+        header {
+            background-color: var(--rm-white);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            border-bottom: 3px solid var(--rm-gold);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.8rem 2rem;
+        }
+
+        .brand-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .brand-logo i {
+            font-size: 2rem;
+            color: var(--rm-gold);
+        }
+
+        .brand-logo span {
+            font-weight: 800;
+            font-size: 1.4rem;
+            color: var(--rm-navy);
+            letter-spacing: 1px;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 0.5rem;
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-link {
+            color: var(--rm-navy);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            padding: 0.6rem 1rem;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: var(--transition);
+        }
+
+        .nav-link:hover {
+            color: var(--rm-blue);
+            background-color: rgba(0, 82, 159, 0.05);
+        }
+
+        /* เมนูย่อย (Dropdown Menu) */
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: var(--rm-white);
+            width: 220px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.12);
+            border-radius: 8px;
+            border-top: 3px solid var(--rm-gold);
+            list-style: none;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: var(--transition);
+            overflow: hidden;
+        }
+
+        .nav-item:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-menu a {
+            color: var(--rm-navy);
+            text-decoration: none;
+            padding: 0.75rem 1.2rem;
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 500;
+            border-bottom: 1px solid #F1F5F9;
+            transition: var(--transition);
+        }
+
+        .dropdown-menu a:hover {
+            background-color: var(--rm-navy);
+            color: var(--rm-gold);
+            padding-left: 1.5rem;
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            background: linear-gradient(135deg, rgba(17, 27, 64, 0.88), rgba(0, 82, 159, 0.8)), 
+                        url('https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+            height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--rm-white);
+            padding: 0 1.5rem;
+        }
+
+        .hero-badge {
+            background: var(--rm-gold);
+            color: var(--rm-navy);
+            font-weight: 700;
+            padding: 0.3rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            letter-spacing: 1px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            max-width: 650px;
+            margin-bottom: 2rem;
+            color: #E2E8F0;
+        }
+
+        .btn-gold {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background-color: var(--rm-gold);
+            color: var(--rm-navy);
+            padding: 0.8rem 2rem;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 700;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(254, 190, 16, 0.4);
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-gold:hover {
+            transform: translateY(-3px);
+            background-color: #E5AB0D;
+            box-shadow: 0 6px 20px rgba(254, 190, 16, 0.6);
+        }
+
+        /* --- Layout Container --- */
+        .container {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 1.5rem;
+        }
+
+        section {
+            margin-bottom: 5rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            color: var(--rm-navy);
+            font-weight: 700;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            width: 60%;
+            height: 4px;
+            background-color: var(--rm-gold);
+            position: absolute;
+            bottom: -8px;
+            left: 20%;
+            border-radius: 2px;
+        }
+
+        /* --- History Section --- */
+        .history-card {
+            background-color: var(--rm-white);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .history-img {
+            flex: 1;
+            min-width: 320px;
+            background: url('https://images.unsplash.com/photo-1577223625816-7546f13df25d?auto=format&fit=crop&w=800&q=80') center/cover no-repeat;
+            min-height: 350px;
+        }
+
+        .history-text {
+            flex: 1.2;
+            min-width: 320px;
+            padding: 3rem 2.5rem;
+        }
+
+        .history-text h3 {
+            color: var(--rm-navy);
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+        }
+
+        .history-text p {
+            color: #475569;
+            margin-bottom: 1.2rem;
+        }
+
+        /* --- Achievements Section --- */
+        .trophy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .trophy-card {
+            background-color: var(--rm-white);
+            padding: 2.5rem 1.5rem;
+            text-align: center;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            border-bottom: 4px solid var(--rm-gold);
+            transition: var(--transition);
+        }
+
+        .trophy-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .trophy-icon {
+            font-size: 2.5rem;
+            color: var(--rm-gold);
+            margin-bottom: 1rem;
+        }
+
+        .trophy-number {
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: var(--rm-navy);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .trophy-name {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-muted);
+        }
+
+        /* --- Players Section --- */
+        .player-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2rem;
+        }
+
+        .player-card {
+            background: var(--rm-white);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid #E2E8F0;
+        }
+
+        .player-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(17, 27, 64, 0.12);
+        }
+
+        .player-img-wrapper {
+            position: relative;
+            height: 300px;
+            overflow: hidden;
+            background-color: #E2E8F0;
+        }
+
+        .player-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .player-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .player-number {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--rm-navy);
+            color: var(--rm-gold);
+            font-size: 1.1rem;
+            font-weight: 800;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid var(--rm-gold);
+        }
+
+        .player-info {
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .player-info h4 {
+            font-size: 1.2rem;
+            color: var(--rm-navy);
+            margin-bottom: 0.2rem;
+            font-weight: 700;
+        }
+
+        .player-info p {
+            color: var(--rm-blue);
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .btn-outline {
+            display: inline-block;
+            color: var(--rm-navy);
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-decoration: none;
+            padding: 0.4rem 1.2rem;
+            border: 1.5px solid var(--rm-navy);
+            border-radius: 20px;
+            transition: var(--transition);
+            cursor: pointer;
+            background: transparent;
+        }
+
+        .btn-outline:hover {
+            background-color: var(--rm-navy);
+            color: var(--rm-gold);
+        }
+
+        /* --- Developer Contact Section --- */
+        .developer-card {
+            background: linear-gradient(135deg, var(--rm-navy), #1A2656);
+            color: var(--rm-white);
+            border-radius: 20px;
+            padding: 3rem 2.5rem;
+            display: flex;
+            align-items: center;
+            gap: 2.5rem;
+            flex-wrap: wrap;
+            box-shadow: var(--shadow);
+            border: 2px solid var(--rm-gold);
+        }
+
+        .developer-avatar {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--rm-gold);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        }
+
+        .developer-info {
+            flex: 1;
+            min-width: 280px;
+        }
+
+        .developer-info h3 {
+            font-size: 1.8rem;
+            color: var(--rm-gold);
+            margin-bottom: 0.3rem;
+        }
+
+        .developer-info .role {
+            font-size: 0.95rem;
+            color: #94A3B8;
+            margin-bottom: 1rem;
+        }
+
+        .developer-info p {
+            font-size: 0.95rem;
+            color: #E2E8F0;
+            margin-bottom: 1.5rem;
+        }
+
+        .line-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: #06C755;
+            color: white;
+            padding: 0.6rem 1.4rem;
+            border-radius: 25px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .line-btn:hover {
+            transform: scale(1.05);
+        }
+
+        /* --- Modal (หน้าต่างป๊อปอัพอ่านเพิ่มเติม) --- */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(17, 27, 64, 0.7);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+        }
+
+        .modal-content {
+            background-color: var(--rm-white);
+            max-width: 600px;
+            width: 100%;
+            border-radius: 16px;
+            padding: 2rem;
+            position: relative;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            border-top: 5px solid var(--rm-gold);
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 1.8rem;
+            color: var(--text-muted);
+            cursor: pointer;
+        }
+
+        .close-btn:hover { color: var(--rm-navy); }
+
+        .modal-header h3 { color: var(--rm-navy); font-size: 1.5rem; margin-bottom: 0.5rem; }
+        .modal-body { color: #475569; margin-top: 1rem; font-size: 0.95rem; line-height: 1.7; }
+
+        /* --- Footer --- */
+        footer {
+            background-color: var(--rm-navy);
+            color: #94A3B8;
+            text-align: center;
+            padding: 2rem 1rem;
+            border-top: 4px solid var(--rm-gold);
+            font-size: 0.9rem;
+        }
+
+        footer strong { color: var(--rm-white); }
+
+        /* --- Mobile Responsive --- */
+        @media (max-width: 768px) {
+            .nav-container { flex-direction: column; gap: 1rem; }
+            .nav-menu { flex-wrap: wrap; justify-content: center; }
+            .hero h1 { font-size: 2.2rem; }
+            .developer-card { text-align: center; justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header & Navigation Bar (พร้อมเมนูย่อย Dropdown) -->
+    <header>
+        <div class="nav-container">
+            <a href="#home" class="brand-logo">
+                <i class="fa-solid fa-crown"></i>
+                <span>REAL MADRID</span>
+            </a>
+            <nav>
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="#home" class="nav-link">หน้าแรก</a>
+                    </li>
+                    
+                    <!-- เมนูย่อย 1: ประวัติสโมสร -->
+                    <li class="nav-item">
+                        <a href="#history" class="nav-link">
+                            ประวัติสโมสร <i class="fa-solid fa-chevron-down" style="font-size: 0.7rem;"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#history">จุดเริ่มต้นปี 1902</a></li>
+                            <li><a href="javascript:void(0)" onclick="openModal('history-royal')">ที่มาคำว่า Real</a></li>
+                            <li><a href="javascript:void(0)" onclick="openModal('history-stadium')">สนาม Santiago Bernabéu</a></li>
+                        </ul>
+                    </li>
+
+                    <!-- เมนูย่อย 2: ผลงาน -->
+                    <li class="nav-item">
+                        <a href="#achievements" class="nav-link">
+                            ผลงานทีม <i class="fa-solid fa-chevron-down" style="font-size: 0.7rem;"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#achievements">เกียรติประวัติรวม</a></li>
+                            <li><a href="javascript:void(0)" onclick="openModal('ucl-detail')">ถ้วยยูฟ่าแชมเปียนส์ลีก (15)</a></li>
+                            <li><a href="javascript:void(0)" onclick="openModal('laliga-detail')">แชมป์ลาลีกา (36)</a></li>
+                        </ul>
+                    </li>
+
+                    <!-- เมนูย่อย 3: รายชื่อผู้เล่น -->
+                    <li class="nav-item">
+                        <a href="#players" class="nav-link">
+                            นักเตะ <i class="fa-solid fa-chevron-down" style="font-size: 0.7rem;"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#players-fw">ศูนย์หน้า (Forwards)</a></li>
+                            <li><a href="#players-mf">กองกลาง (Midfielders)</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="#developer" class="nav-link">ผู้พัฒนาเว็บ</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <span class="hero-badge">El King de Europa</span>
+        <h1>HALA MADRID!</h1>
+        <p>ยินดีต้อนรับสู่เว็บไซต์แฟนคลับสโมสรฟุตบอลเรอัลมาดริด ราชันชุดขาวผู้ยิ่งใหญ่ที่สุดแห่งยุโรป</p>
+        <button class="btn-gold" onclick="openModal('history-royal')">
+            <i class="fa-solid fa-book-open"></i> อ่านเรื่องน่ารู้เพิ่มเติม
+        </button>
+    </section>
+
+    <div class="container">
+
+        <!-- History Section -->
+        <section id="history">
+            <div class="section-header">
+                <h2 class="section-title">ประวัติการก่อตั้งสโมสร</h2>
+            </div>
+            <div class="history-card">
+                <div class="history-img"></div>
+                <div class="history-text">
+                    <h3>จุดเริ่มต้นแห่งตำนานราชันชุดขาว</h3>
+                    <p>สโมสรฟุตบอลเรอัลมาดริด ก่อตั้งขึ้นเมื่อวันที่ <strong>6 มีนาคม ค.ศ. 1902</strong> ในชื่อ <em>Madrid Foot-ball Club</em> โดยกลุ่มนักศึกษาจากมหาวิทยาลัยในกรุงมาดริด</p>
+                    <p>ในปี ค.ศ. 1920 สมเด็จพระเจ้าอัลฟอนโซที่ 13 แห่งสเปน ได้พระราชทานยศ <strong>"Real"</strong> (แปลว่า ของพระราชา) ให้แก่สโมสร พร้อมมอบมงกุฎประดับตราสโมสร</p>
+                    <button class="btn-outline" onclick="openModal('history-royal')">อ่านรายละเอียดประวัติเพิ่มเติม</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Achievements Section -->
+        <section id="achievements">
+            <div class="section-header">
+                <h2 class="section-title">ผลงานและถ้วยรางวัล</h2>
+            </div>
+            <div class="trophy-grid">
+                <div class="trophy-card" onclick="openModal('ucl-detail')" style="cursor: pointer;">
+                    <i class="fa-solid fa-trophy trophy-icon"></i>
+                    <div class="trophy-number">15</div>
+                    <div class="trophy-name">UEFA Champions League<br>(สูงสุดในประวัติศาสตร์)</div>
+                </div>
+                <div class="trophy-card" onclick="openModal('laliga-detail')" style="cursor: pointer;">
+                    <i class="fa-solid fa-award trophy-icon"></i>
+                    <div class="trophy-number">36</div>
+                    <div class="trophy-name">La Liga Santander<br>(แชมป์ลีกสูงสุดสเปน)</div>
+                </div>
+                <div class="trophy-card">
+                    <i class="fa-solid fa-shield-halved trophy-icon"></i>
+                    <div class="trophy-number">20</div>
+                    <div class="trophy-name">Copa del Rey<br>(ถ้วยพระราชทานสเปน)</div>
+                </div>
+                <div class="trophy-card">
+                    <i class="fa-solid fa-earth-americas trophy-icon"></i>
+                    <div class="trophy-number">5</div>
+                    <div class="trophy-name">FIFA Club World Cup<br>(แชมป์สโมสรโลก)</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Players Section -->
+        <section id="players">
+            <div class="section-header">
+                <h2 class="section-title">รายชื่อผู้เล่นหลัก (Squad 2026)</h2>
+            </div>
+            <div class="player-grid">
+                
+                <!-- Player 1 -->
+                <div class="player-card" id="players-fw">
+                    <div class="player-img-wrapper">
+                        <span class="player-number">9</span>
+                        <img src="https://images.unsplash.com/photo-1517466787929-bc90951d0974?auto=format&fit=crop&w=600&q=80" alt="Kylian Mbappé">
+                    </div>
+                    <div class="player-info">
+                        <h4>Kylian Mbappé</h4>
+                        <p>กองหน้า (Forward)</p>
+                        <button class="btn-outline" onclick="openModal('mbappe-detail')">อ่านข้อมูลเพิ่มเติม</button>
+                    </div>
+                </div>
+
+                <!-- Player 2 -->
+                <div class="player-card">
+                    <div class="player-img-wrapper">
+                        <span class="player-number">7</span>
+                        <img src="https://images.unsplash.com/photo-1543326727-cf6c39e8f84c?auto=format&fit=crop&w=600&q=80" alt="Vinícius Júnior">
+                    </div>
+                    <div class="player-info">
+                        <h4>Vinícius Júnior</h4>
+                        <p>ปีกซ้าย (Winger)</p>
+                        <button class="btn-outline" onclick="openModal('vini-detail')">อ่านข้อมูลเพิ่มเติม</button>
+                    </div>
+                </div>
+
+                <!-- Player 3 -->
+                <div class="player-card" id="players-mf">
+                    <div class="player-img-wrapper">
+                        <span class="player-number">5</span>
+                        <img src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=600&q=80" alt="Jude Bellingham">
+                    </div>
+                    <div class="player-info">
+                        <h4>Jude Bellingham</h4>
+                        <p>กองกลาง (Midfielder)</p>
+                        <button class="btn-outline" onclick="openModal('jude-detail')">อ่านข้อมูลเพิ่มเติม</button>
+                    </div>
+                </div>
+
+                <!-- สามารถคัดลอกบล็อก .player-card ด้านบนมาวางเพิ่มนักเตะในโค้ดได้เลย -->
+
+            </div>
+        </section>
+
+        <!-- Developer Contact Section -->
+        <section id="developer">
+            <div class="section-header">
+                <h2 class="section-title">ติดต่อผู้พัฒนาเว็บไซต์</h2>
+            </div>
+            <div class="developer-card">
+                <img src="https://via.placeholder.com/150" alt="ณัฐภูมินทร์ ป้องหม้าย" class="developer-avatar">
+                <div class="developer-info">
+                    <h3>ณัฐภูมินทร์ ป้องหม้าย</h3>
+                    <div class="role">Frontend Web Developer & UX/UI Designer</div>
+                    <p>ผู้ออกแบบและพัฒนาเว็บไซต์แฟนคลับสโมสร Real Madrid ออกแบบเมนูย่อย (Dropdown Menu) และป๊อปอัพอ่านเพิ่มเติมด้วยโครงสร้าง HTML5/CSS3 และ JavaScript ที่ถูกต้องตามมาตรฐาน UX/UI</p>
+                    <a href="https://line.me/ti/p/~nava06072557" target="_blank" class="line-btn">
+                        <i class="fa-brands fa-line"></i> LINE ID: nava06072557
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Modal Container (หน้าต่างอ่านเพิ่มเติม) -->
+    <div id="infoModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <div class="modal-header">
+                <h3 id="modalTitle">หัวข้อ</h3>
+            </div>
+            <div class="modal-body" id="modalBody">
+                รายละเอียด...
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Real Madrid CF Fanbase. Designed & Developed by <strong>ณัฐภูมินทร์ ป้องหม้าย</strong></p>
+    </footer>
+
+    <!-- JavaScript สำหรับระบบป๊อปอัพอ่านเพิ่มเติม (Modal) -->
+    <script>
+        const modalData = {
+            'history-royal': {
+                title: 'ประวัติและตรามงกุฎพระราชา (Real)',
+                body: 'คำว่า "Real" เป็นภาษาลาติน/สเปน หมายถึง Royal หรือของพระราชา สโมสรได้รับเกียรติยศนี้เมื่อวันที่ 29 มิถุนายน ค.ศ. 1920 จากสมเด็จพระเจ้าอัลฟอนโซที่ 13 แห่งสเปน ซึ่งพระราชทานให้แก่สโมสรฟุตบอลมาดริด พร้อมกับสิทธิ์ในการประดับตรามงกุฎไว้บนยอดสุดของตราประจำสโมสร'
+            },
+            'history-stadium': {
+                title: 'สนาม ซานเตียโก แบร์นาเบว (Santiago Bernabéu)',
+                body: 'เปิดใช้งานเมื่อปี ค.ศ. 1947 โดยตั้งชื่อตามอดีตประธานสโมสรผู้ตำนาน ซานเตียโก แบร์นาเบว ซึ่งปัจจุบันได้รับการรีโนเวทใหม่ให้เป็นหนึ่งในอารีนาฟุตบอลที่ทันสมัยและล้ำยุคที่สุดในโลก มีหลังคาเปิด-ปิดได้ และระบบเก็บหญ้าใต้ดิน'
+            },
+            'ucl-detail': {
+                title: 'เกียรติประวัติ ยูฟ่าแชมเปียนส์ลีก 15 สมัย',
+                body: 'เรอัล มาดริด เป็นเจ้าแห่งยุโรปอย่างแท้จริง โดยครองแชมป์ยุโรปได้ 5 สมัยแรกติดต่อกัน (1956-1960) และคว้าแชมป์สมัยที่ 15 ได้สำเร็จในฤดูกาล 2023/24 ตอกย้ำความเป็นอันดับ 1 ของทวีปยุโรปแบบไร้ข้อกังขา'
+            },
+            'laliga-detail': {
+                title: 'แชมป์ลาลีกา สเปน 36 สมัย',
+                body: 'สโมสรคว้าถ้วยรางวัลชนะเลิศฟุตบอลลีกสูงสุดของสเปน (La Liga) ได้มากที่สุดในประวัติศาสตร์ โดยคว้าแชมป์สมัยที่ 36 ได้อย่างยิ่งใหญ่ ยืนยันถึงความสม่ำเสมอในระดับประเทศ'
+            },
+            'mbappe-detail': {
+                title: 'คีเลียน เอ็มบัปเป้ (Kylian Mbappé)',
+                body: 'ศูนย์หน้าความเร็วสูงระดับโลกชาวฝรั่งเศส สวมเสื้อหมายเลข 9 ย้ายมาร่วมทีมเพื่อสร้างยุคสมัยใหม่ของ Galácticos โดดเด่นด้วยการยิงประตูที่เด็ดขาดและการเลี้ยงบอลทะลวงแนวรับ'
+            },
+            'vini-detail': {
+                title: 'วินิซิอุส จูเนียร์ (Vinícius Júnior)',
+                body: 'ปีกซ้ายชาวบราซิล สวมเสื้อหมายเลข 7 ผู้สืบทอดเบอร์ตำนาน โดดเด่นด้วยทักษะการลากเลื้อยสไตล์แซมบ้า การทำประตูในนัดชิงชนะเลิศแชมเปียนส์ลีก และเป็นหัวใจสำคัญในเกมรุก'
+            },
+            'jude-detail': {
+                title: 'จู๊ด เบลลิงแฮม (Jude Bellingham)',
+                body: 'กองกลางอัจฉริยะทีมชาติอังกฤษ สวมเสื้อหมายเลข 5 ตามรอย ซีเนดีน ซีดาน มีจุดเด่นด้านการสอดขึ้นมายิงประตู ควบคุมจังหวะเกม และภาวะผู้นำในสนามตั้งแต่อายุยังน้อย'
+            }
+        };
+
+        function openModal(key) {
+            const data = modalData[key];
+            if (data) {
+                document.getElementById('modalTitle').innerText = data.title;
+                document.getElementById('modalBody').innerText = data.body;
+                document.getElementById('infoModal').style.display = 'flex';
+            }
+        }
+
+        function closeModal() {
+            document.getElementById('infoModal').style.display = 'none';
+        }
+
+        // ปิดป๊อปอัพเมื่อคลิกพื้นที่ด้านนอก
+        window.onclick = function(event) {
+            const modal = document.getElementById('infoModal');
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>
